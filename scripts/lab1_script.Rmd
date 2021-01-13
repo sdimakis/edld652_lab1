@@ -1,0 +1,23 @@
+---
+title: "Lab 1"
+author: "Sarah Dimakis, Sarah Donaldson, Wanjia Guo, and Meghan Siritzky"
+date: "1/13/2021"
+output: html_document
+---
+
+# Plot 1 rough draft
+
+Sarah Donaldson
+
+
+# Finalized Plot 1
+
+Wanjia
+
+# Plot 2 rough draft
+
+Sarah Dimakis
+
+# Finalized Plot 2
+
+Meg
