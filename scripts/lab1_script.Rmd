@@ -22,11 +22,18 @@ data <- import(here("data", "rstats_tweets.rds"))
 # Plot 1 rough draft
 
 Sarah Donaldson
+```{r}
+
+```
 
 
 # Finalized Plot 1
 
 Wanjia
+```{r}
+# He said in class that you can just use theme_minimal() if you can't figure out the background
+```
+
 
 # Plot 2 rough draft
 
@@ -52,7 +59,7 @@ data %>%
 
 Meg
 ```{r}
-# He hinted that you can use geom_ribbon but it might be easier to just use geom_area()
+# He hinted that you can use geom_ribbon() to shade underneath the curve but it might be easier to just use geom_area()
 
 
 ```
