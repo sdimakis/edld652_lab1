@@ -3,7 +3,21 @@ title: "Lab 1"
 author: "Sarah Dimakis, Sarah Donaldson, Wanjia Guo, and Meghan Siritzky"
 date: "1/13/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r, include = FALSE}
+#load libraries
+library(here)
+library(rio)
+library(tidyverse)
+```
+
+```{r, include = FALSE}
+#import data
+data <- import(here("data", "rstats_tweets.rds"))
+```
 
 # Plot 1 rough draft
 
@@ -16,8 +30,29 @@ Wanjia
 
 # Plot 2 rough draft
 
-Sarah Dimakis
+```{r, message = FALSE}
+#adding a month variable that is created_at rounded to the nearest month
+data <- data %>% 
+  mutate(month = lubridate::round_date(created_at, unit = "month"))  
+
+#creating figure
+data %>% 
+  filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% #filtering months before 2019
+  group_by(month) %>% #group by month
+  summarize(n = n()) %>% #count observations per month
+  ggplot(aes(month, n)) +
+    geom_line() + #add black line
+    geom_smooth() #add blue line with se 
+
+
+```
+
 
 # Finalized Plot 2
 
 Meg
+```{r}
+# He hinted that you can use geom_ribbon but it might be easier to just use geom_area()
+
+
+```
