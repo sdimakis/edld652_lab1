@@ -43,7 +43,7 @@ data <- data %>%
   mutate(month = lubridate::round_date(created_at, unit = "month"))  
 
 #creating figure
-data %>% 
+fig_2 <- data %>% 
   filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% #filtering months before 2019
   group_by(month) %>% #group by month
   summarize(n = n()) %>% #count observations per month
@@ -60,6 +60,19 @@ data %>%
 Meg
 ```{r}
 # He hinted that you can use geom_ribbon() to shade underneath the curve but it might be easier to just use geom_area()
-
-
+#updated figure with visual edits
+fig_2_finalized <- data %>% 
+  filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% #filtering months before 2019
+  group_by(month) %>% #group by month
+  summarize(n = n()) %>% #count observations per month
+  ggplot(aes(month, n)) +
+  geom_line(color = "gray40", size = 0.8) + #make line grey and thicker
+  geom_smooth(se = FALSE, color = "magenta2") + #make line magenta and take away confidence intervals 
+  geom_area(fill = "dodgerblue3", alpha = 0.2) + #shade in area under the curve in light blue
+  labs(x = "Year (data summarized by month)", #add axis labels, title, and caption
+       y = "Number of #rstats tweets",
+       title = "Growth of the #rstats hashtag on twitter over time",
+       caption = "Data from Mike Kearny, distributed via #tidytuesday") +
+  theme_minimal() #change theme
+fig_2_finalized
 ```
