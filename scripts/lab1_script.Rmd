@@ -4,10 +4,39 @@ author: "Sarah Dimakis, Sarah Donaldson, Wanjia Guo, and Meghan Siritzky"
 date: "1/13/2021"
 output: html_document
 ---
+```{r setup, include=FALSE, warning=FALSE, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      messages = FALSE,
+                      errors = FALSE)
+
+library(tidyverse)
+
+```
 
 # Plot 1 rough draft
 
 Sarah Donaldson
+```{r data_clean, eval=TRUE, echo=FALSE, include=FALSE}
+
+rstats <- readRDS(here::here("data", "rstats_tweets.rds")) %>% 
+  group_by(screen_name) %>% 
+  summarize(n=n()) %>% 
+  mutate(screen_name = factor(screen_name)) %>% 
+  arrange(desc(n)) %>% 
+  slice(1:25)
+
+```
+
+```{r plot1}
+ggplot(rstats, aes(fct_reorder(screen_name, n), n)) +
+  theme_minimal() +
+  geom_col() +
+  coord_flip() +
+  labs(x = "screen_name")
+
+```
+
 
 
 # Finalized Plot 1
