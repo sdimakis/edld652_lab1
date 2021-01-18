@@ -22,10 +22,25 @@ data <- import(here("data", "rstats_tweets.rds"))
 # Plot 1 rough draft
 
 Sarah Donaldson
-```{r}
+```{r data_clean, include=FALSE}
+
+rstats <- data %>% 
+  group_by(screen_name) %>% 
+  summarize(n=n()) %>% 
+  mutate(screen_name = factor(screen_name)) %>% 
+  arrange(desc(n)) %>% 
+  slice(1:25)
 
 ```
 
+```{r plot1_RD}
+ggplot(rstats, aes(fct_reorder(screen_name, n), n)) +
+  theme_minimal() +
+  geom_col() +
+  coord_flip() +
+  labs(x = "screen_name")
+
+```
 
 # Finalized Plot 1
 
