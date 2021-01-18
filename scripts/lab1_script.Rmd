@@ -50,16 +50,14 @@ fig_2 <- data %>%
   ggplot(aes(month, n)) +
     geom_line() + #add black line
     geom_smooth() #add blue line with se 
-
+fig_2
 
 ```
 
 
 # Finalized Plot 2
 
-Meg
-```{r}
-# He hinted that you can use geom_ribbon() to shade underneath the curve but it might be easier to just use geom_area()
+```{r, message = FALSE}
 #updated figure with visual edits
 fig_2_finalized <- data %>% 
   filter(month < lubridate::as_datetime("2019-01-01 00:00:00")) %>% #filtering months before 2019
