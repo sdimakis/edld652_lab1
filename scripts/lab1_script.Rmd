@@ -21,8 +21,7 @@ data <- import(here("data", "rstats_tweets.rds"))
 
 # Plot 1 rough draft
 
-Sarah Donaldson
-```{r data_clean, include=FALSE}
+```{r data_clean, message = FALSE}
 
 rstats <- data %>% 
   group_by(screen_name) %>% 
@@ -44,7 +43,6 @@ ggplot(rstats, aes(fct_reorder(screen_name, n), n)) +
 
 # Finalized Plot 1
 
-Wanjia
 ```{r plot1}
 
 ggplot(rstats, aes(x=fct_reorder(screen_name, n), y=n)) +
@@ -60,7 +58,7 @@ ggplot(rstats, aes(x=fct_reorder(screen_name, n), y=n)) +
   theme(axis.line = element_blank(), 
         axis.ticks = element_blank(), # remove axis for x- and y-
         plot.title = element_text(hjust = -0.35),
-        plot.subtitle = element_text(hjust = -0.35)) # adjusting title and subtitle locaiton
+        plot.subtitle = element_text(hjust = -0.35)) # adjusting title and subtitle location
 
 
 ```
