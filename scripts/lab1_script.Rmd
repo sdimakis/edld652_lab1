@@ -45,8 +45,24 @@ ggplot(rstats, aes(fct_reorder(screen_name, n), n)) +
 # Finalized Plot 1
 
 Wanjia
-```{r}
-# He said in class that you can just use theme_minimal() if you can't figure out the background
+```{r plot1}
+
+ggplot(rstats, aes(x=fct_reorder(screen_name, n), y=n)) +
+  geom_hline(yintercept=c(0, 10000, 20000, 30000),  color = "darkgrey")+
+  geom_col(fill="steelblue", alpha=0.8) + # setting up bar color
+  coord_flip() + 
+  labs(x = "Twitter Screen Name", 
+       y="Count",
+       caption = "Data from Mike Kearny, distributed via #tidytuesday",
+       title = "Most prolific #rstats twitters",
+       subtitle = "Top 25 screen names displayed") + # adding text
+  theme_classic()+ 
+  theme(axis.line = element_blank(), 
+        axis.ticks = element_blank(), # remove axis for x- and y-
+        plot.title = element_text(hjust = -0.35),
+        plot.subtitle = element_text(hjust = -0.35)) # adjusting title and subtitle locaiton
+
+
 ```
 
 
